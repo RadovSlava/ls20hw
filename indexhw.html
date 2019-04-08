@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="index.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="menu">
+        <button id=first data-action="first">first</button>
+        <button id=second data-action="second">second</button>
+        <button id=Third data-action="third">third</button>
+    </div>
+
+    <p id="my">Click on any button</p>
+
+
+    <script>
+        function Menu(elem) {
+            this.first = function () {
+                document.getElementById("my").innerHTML = 'you clicked first button';
+
+            };
+            this.second = function () {
+                document.getElementById("my").innerHTML = 'you clicked second button';
+            };
+            this.third = function () {
+                document.getElementById("my").innerHTML = 'you clicked third button';
+            };
+
+            var self = this;
+
+            elem.onclick = function (e) {
+                var target = e.target;
+                var action = target.getAttribute('data-action');
+                if (action) {
+                    self[action]();
+                    console.log("capturing" + '', action);
+                }
+            };
+        }
+
+        new Menu(menu);
+    </script>
+
+
+
+</body>
+
+</html>
